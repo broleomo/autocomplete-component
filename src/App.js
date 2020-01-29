@@ -1,24 +1,33 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import Autocomplete from './Autocomplete';
 import logo from './logo.svg';
+import axios from "axios";
 import './App.css';
 
 function App() {
+  const  [data, setData] = useState({ predictions: [] });
+  console.log(data);
+  useEffect(() => {
+  const fetchData = async () => {
+    const result = await axios(
+      'https://coding-challenge.echoandapex.com/locations?q=pdx',
+    );
+    setData(result.data);
+  };
+  fetchData();
+}, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Blooming Pixel Creatives Autocomplete</h1>
+      <div className="search-container">
+        <input type="text" className="search-box"/>
+        <button type="submit" className="search-button">Search</button>
+      </div>
+      <Autocomplete 
+        text="This is the autocomplete component"
+        suggestions={data.predictions}
+      />
     </div>
   );
 }

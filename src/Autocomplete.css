@@ -1,0 +1,12 @@
+.autocomplete-container li {
+  list-style: none;
+  font-size: 20px;
+}
+
+ul {
+  width: 300px;
+}
+
+.autocomplete-container {
+  text-align: left;
+}
