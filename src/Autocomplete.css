@@ -1,12 +1,28 @@
-.autocomplete-container li {
+li {
   list-style: none;
   font-size: 20px;
 }
 
 ul {
   width: 300px;
+  margin: 0;
+  padding: 0;
 }
 
-.autocomplete-container {
-  text-align: left;
+.suggestion {
+  margin-top: 4px;
+  padding: 5px;
+  cursor: pointer;
+  background-color: white;
+  color: #E62A61;
+}
+
+.suggestion:hover {
+  color: white;
+  background-color: #E62A61;
+}
+
+.selected {
+  background-color: #E62A61;
+  color: white;
 }

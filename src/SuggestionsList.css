@@ -1,0 +1,18 @@
+.form-input {
+  width: 400px;
+  height: 50px;
+  font-size: 20px;
+  letter-spacing: 4px;
+  padding: 0 10px;
+  color: #E62A61;
+  font-family: 'Raleway', sans-serif;
+  border: none;
+}
+
+.suggestions-list {
+  list-style: none;
+  padding: 0;
+  max-height: 160px;
+  overflow-y: auto;
+  max-width: 400px;
+}
