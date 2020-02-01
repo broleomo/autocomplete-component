@@ -20,26 +20,26 @@ const Autocomplete = () => {
   fetchData();
 }, []);
 
-const formattedPredictions = data.predictions.map(prediction => ({name: prediction.name, description: prediction.description}));
-
-const suggestions = formattedPredictions.map((prediction) => prediction.name);
+const suggestions = data.predictions.map(prediction => ({name: prediction.name, description: prediction.description}));
+const predictionNames = suggestions.map((prediction) => prediction.name)
+console.log(suggestions);
 
   const onChange = event => {
     const value = event.target.value;
     setInputValue(value);
 
-    const filteredSuggestions = suggestions.filter(suggestion =>
-      suggestion.toLowerCase().includes(value.toLowerCase())
+    const filteredSuggestions = predictionNames.filter(prediction =>
+      prediction.toLowerCase().includes(value.toLowerCase())
     );
 
-    setFilteredSuggestions(filteredSuggestions);
+    setFilteredSuggestions(suggestions);
     setDisplaySuggestions(true);
   };
 
   const onSelectSuggestion = index => {
     setSelectedSuggestion(index);
-    setInputValue(filteredSuggestions[index]);
-    setFilteredSuggestions([]);
+    setInputValue(suggestions[index]);
+    setFilteredSuggestions([suggestions]);
     setDisplaySuggestions(false);
   };
 
@@ -49,7 +49,7 @@ const suggestions = formattedPredictions.map((prediction) => prediction.name);
         className="form-input"
         type="text"
         onChange={onChange}
-        value={inputValue}
+        value={inputValue.name}
       />
       <SuggestionsList
         inputValue={inputValue}

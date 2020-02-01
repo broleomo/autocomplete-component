@@ -15,6 +15,7 @@ ul {
   cursor: pointer;
   background-color: white;
   color: #E62A61;
+  font-size: 14px;
 }
 
 .suggestion:hover {

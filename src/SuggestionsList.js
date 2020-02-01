@@ -9,6 +9,7 @@ const SuggestionsList = props => {
     displaySuggestions,
     selectedSuggestion
   } = props;
+  console.log(suggestions);
 
   if (inputValue && displaySuggestions) {
     if (suggestions.length > 0) {
@@ -23,7 +24,8 @@ const SuggestionsList = props => {
                 className={classname}
                 onClick={() => onSelectSuggestion(index)}
               >
-                {suggestion}
+                <p className="suggestion-name">{suggestion.name}</p> 
+                <p className="suggestion-description">{suggestion.description}</p> 
               </li>
             );
           })}
