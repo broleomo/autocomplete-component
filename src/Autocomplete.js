@@ -5,7 +5,7 @@ import './Autocomplete.css';
 
 const Autocomplete = () => {
   const [inputValue, setInputValue] = useState("");
-  const [filteredSuggestions, setFilteredSuggestions] = useState([]);
+  let [suggestions, setFilteredSuggestions] = useState([]);
   const [selectedSuggestion, setSelectedSuggestion] = useState(0);
   const [displaySuggestions, setDisplaySuggestions] = useState(false);
   const  [data, setData] = useState({ predictions: [] });
@@ -20,17 +20,11 @@ const Autocomplete = () => {
   fetchData();
 }, []);
 
-const suggestions = data.predictions.map(prediction => ({name: prediction.name, description: prediction.description}));
-const predictionNames = suggestions.map((prediction) => prediction.name)
-console.log(suggestions);
+  suggestions = data.predictions.map(prediction => ({name: prediction.name, description: prediction.description}));
 
   const onChange = event => {
     const value = event.target.value;
     setInputValue(value);
-
-    const filteredSuggestions = predictionNames.filter(prediction =>
-      prediction.toLowerCase().includes(value.toLowerCase())
-    );
 
     setFilteredSuggestions(suggestions);
     setDisplaySuggestions(true);

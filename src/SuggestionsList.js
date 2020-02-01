@@ -9,7 +9,6 @@ const SuggestionsList = props => {
     displaySuggestions,
     selectedSuggestion
   } = props;
-  console.log(suggestions);
 
   if (inputValue && displaySuggestions) {
     if (suggestions.length > 0) {
